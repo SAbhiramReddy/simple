@@ -1,0 +1,144 @@
+from pptx import Presentation
+from pptx.util import Inches
+
+# Create a new presentation
+prs = Presentation()
+
+# Slide 1: Project Overview
+slide = prs.slides.add_slide(prs.slide_layouts[1])
+title, content = slide.shapes.title, slide.placeholders[1]
+title.text = "Project Overview"
+content.text = (
+    "Simple Task Management API\n\n"
+    "A RESTful API for managing tasks, designed for beginners.\n"
+    "- Allows users to create, update, delete, and view tasks.\n"
+    "- Each user has a personalized task list managed with authentication and security.\n"
+    "- Ideal for learning backend development fundamentals in Java with Spring Boot."
+)
+
+# Slide 2: Key Project Features
+slide = prs.slides.add_slide(prs.slide_layouts[1])
+title, content = slide.shapes.title, slide.placeholders[1]
+title.text = "Key Project Features"
+content.text = (
+    "- CRUD Operations: Create, read, update, and delete tasks.\n"
+    "- User Authentication: Users can only access their own tasks.\n"
+    "- Database Integration: Simple data management with H2.\n"
+    "- Spring Security: Provides basic HTTP authentication."
+)
+
+# Slide 3: Technologies Used
+slide = prs.slides.add_slide(prs.slide_layouts[1])
+title, content = slide.shapes.title, slide.placeholders[1]
+title.text = "Technologies Used"
+content.text = (
+    "- Java & Spring Boot: Core framework for developing RESTful APIs.\n"
+    "- Spring Data JPA: Manages database interactions.\n"
+    "- Spring Security: Handles user authentication and authorization.\n"
+    "- H2 Database: Lightweight in-memory database, easy to set up for prototyping."
+)
+
+# Slide 4: Project Structure
+slide = prs.slides.add_slide(prs.slide_layouts[1])
+title, content = slide.shapes.title, slide.placeholders[1]
+title.text = "Project Structure"
+content.text = (
+    "src\n"
+    "└── main\n"
+    "    ├── java/com/example/taskmanager\n"
+    "    │   ├── TaskManagerApplication.java       // Main entry point\n"
+    "    │   ├── controller\n"
+    "    │   │   ├── TaskController.java           // API for task CRUD\n"
+    "    │   │   └── AuthController.java           // API for user registration\n"
+    "    │   ├── model\n"
+    "    │   │   ├── Task.java                     // Task entity\n"
+    "    │   │   └── User.java                     // User entity\n"
+    "    │   ├── repository\n"
+    "    │   │   ├── TaskRepository.java           // Task DB operations\n"
+    "    │   │   └── UserRepository.java           // User DB operations\n"
+    "    │   └── security\n"
+    "    │       └── SecurityConfig.java           // Basic security setup\n"
+    "    └── resources/application.properties       // DB and app configuration"
+)
+
+# Slide 5: Core Components
+slide = prs.slides.add_slide(prs.slide_layouts[1])
+title, content = slide.shapes.title, slide.placeholders[1]
+title.text = "Core Components"
+content.text = (
+    "1. TaskManagerApplication.java:\n"
+    "- The entry point of the Spring Boot application.\n\n"
+    "2. Model Classes:\n"
+    "- User: Stores user information (username, password) and associated tasks.\n"
+    "- Task: Defines task properties (title, description, status, and user relationship).\n\n"
+    "3. Repository Interfaces:\n"
+    "- UserRepository: Manages user data.\n"
+    "- TaskRepository: Manages task data."
+)
+
+# Slide 6: Controller Layer
+slide = prs.slides.add_slide(prs.slide_layouts[1])
+title, content = slide.shapes.title, slide.placeholders[1]
+title.text = "Controller Layer"
+content.text = (
+    "AuthController.java:\n"
+    "- `/auth/register`: Registers a new user with encrypted password.\n\n"
+    "TaskController.java:\n"
+    "- `/tasks` (GET): Retrieves all tasks for the logged-in user.\n"
+    "- `/tasks` (POST): Creates a new task.\n"
+    "- `/tasks/{id}` (PUT): Updates an existing task.\n"
+    "- `/tasks/{id}` (DELETE): Deletes a task."
+)
+
+# Slide 7: Security Configuration
+slide = prs.slides.add_slide(prs.slide_layouts[1])
+title, content = slide.shapes.title, slide.placeholders[1]
+title.text = "Security Configuration"
+content.text = (
+    "SecurityConfig.java\n"
+    "- Configures basic HTTP authentication with Spring Security.\n"
+    "- BCryptPasswordEncoder: Encrypts passwords for user security.\n"
+    "- Configures `/auth/**` endpoints as publicly accessible, while restricting other endpoints to authenticated users only."
+)
+
+# Slide 8: How to Run the Application
+slide = prs.slides.add_slide(prs.slide_layouts[1])
+title, content = slide.shapes.title, slide.placeholders[1]
+title.text = "How to Run the Application"
+content.text = (
+    "1. Register a User: POST /auth/register\n"
+    "- Register a new user with username and password.\n\n"
+    "2. Login:\n"
+    "- Use basic auth with registered credentials.\n\n"
+    "3. Manage Tasks:\n"
+    "- Use `/tasks` endpoints to create, read, update, and delete tasks.\n\n"
+    "4. Access H2 Database:\n"
+    "- Go to http://localhost:8080/h2-console\n"
+    "- JDBC URL: jdbc:h2:mem:testdb"
+)
+
+# Slide 9: Demo (Optional)
+slide = prs.slides.add_slide(prs.slide_layouts[1])
+title, content = slide.shapes.title, slide.placeholders[1]
+title.text = "Demo (Optional)"
+content.text = (
+    "- Show task creation, retrieval, update, and deletion via Postman or another API client.\n"
+    "- Demonstrate the H2 Console to display stored data in real-time."
+)
+
+# Slide 10: Key Learnings
+slide = prs.slides.add_slide(prs.slide_layouts[1])
+title, content = slide.shapes.title, slide.placeholders[1]
+title.text = "Key Learnings"
+content.text = (
+    "- Building RESTful APIs with CRUD functionality in Java and Spring Boot.\n"
+    "- Implementing user authentication and authorization.\n"
+    "- Structuring backend projects for scalability and readability.\n"
+    "- Using in-memory databases for prototyping."
+)
+
+# Save the presentation
+pptx_path = "/mnt/data/SimpleTaskManagementAPI_Presentation.pptx"
+prs.save(pptx_path)
+
+pptx_path
